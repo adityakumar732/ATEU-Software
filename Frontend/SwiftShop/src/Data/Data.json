@@ -1,0 +1,121 @@
+{
+  "Product": [
+    {
+      "id": "a71f",
+      "category": "Electronics",
+      "title": "Vivo V50 5G (Rose Red, 12GB RAM, 512GB Storage)",
+      "price": "40999",
+      "image": "https://m.media-amazon.com/images/I/71m7OmKyA5L._SX679_.jpg",
+      "rating": "4",
+      "description": "Screen & display: 17.19 cm (6.77\" inch) Quad Curved AMOLED capacitive multi-touch Display | P3 wide colour gamut supported | 387 ppi high pixel density|"
+    },
+    {
+      "id": "55cb",
+      "category": "Electronics",
+      "title": "Samsung Galaxy A55 5G (Awesome Navy)",
+      "price": "39999",
+      "image": "https://m.media-amazon.com/images/I/41EP8cpWXmL._SX300_SY300_QL70_FMwebp_.jpg",
+      "rating": "8",
+      "description": "DISPLAY - 16.83 Centimeters (6.6\"Inch) Super AMOLED Display with 19.5:9 Aspect Ratio, FHD+ Resolution with 2340 x 1080 Pixels , 389 PPI with 16M Colors "
+    },
+    {
+      "id": "57d9",
+      "category": "Electronics",
+      "title": "Xiaomi 14 CIVI (Shadow Black, 8GB RAM, 256GB Storage)",
+      "price": "39999",
+      "image": "https://m.media-amazon.com/images/I/71x5XVC9UlL._SX679_.jpg",
+      "rating": "6",
+      "description": "Leica 50MP Triple camera setup to capture every moment in great detail. Light Hunter 800 sensor with 2x 50MP telephoto camera and 12MP high resolution Ultrawide camera."
+    },
+    {
+      "id": "2ea0",
+      "category": "Electronics",
+      "title": "iQOO Neo9 Pro 5G (Fiery Red, 8GB RAM, 128GB Storage)",
+      "price": "31999",
+      "image": "https://m.media-amazon.com/images/I/718jcIFYaAL._SX679_.jpg",
+      "rating": "9",
+      "description": "Flagship Level Performance - Snapdragon 8gen2 Mobile platform based on TSMC 4nm process with tri cluster architecture of 1+4+3"
+    },
+    {
+      "id": "eaa5",
+      "category": "Electronics",
+      "title": "Acer Aspire Lite AMD Ryzen 5-5625U ",
+      "price": "31990",
+      "image": "https://m.media-amazon.com/images/I/41Bmui2T3TL._SX300_SY300_QL70_FMwebp_.jpg",
+      "rating": "6",
+      "description": "Processor: AMD Ryzen 5-5625U, Hexa-Core Processor with AMD Radeon Graphics. Maximum Power Supply Wattage 45W"
+    },
+    {
+      "id": "99ae",
+      "category": "Electronics",
+      "title": "Acer Aspire Lite 12th Gen Intel Core i3",
+      "price": "33990",
+      "image": "https://m.media-amazon.com/images/I/51KL3aOZ0tL._SX679_.jpg",
+      "rating": "4",
+      "description": "Powerful Productivity: 12th Generation Intel Core i3-1215U Dual Core processor delivers unmatched speed and intelligence"
+    },
+    {
+      "id": "8450",
+      "category": "Electronics",
+      "title": "Acer Wireless Mouse (1600 DPI/2.4 GHz",
+      "price": "399",
+      "image": "https://m.media-amazon.com/images/I/41wDHNWqqmL._SX679_.jpg",
+      "rating": "8",
+      "description": "Acer Wireless White/Green Mouse features an attractive comfortable design to enhance your everyday productivity"
+    },
+    {
+      "id": "5c5b",
+      "category": "Electronics",
+      "title": "Acer Beam Wireless & Bluetooth ",
+      "price": "399",
+      "image": "https://m.media-amazon.com/images/I/71GHjaVzNmL._SX679_.jpg",
+      "rating": "6",
+      "description": "【Dual mode Connection】Bluetooth 5.1 & 2.4G, this wireless Beam mouse boasts an advanced Bluetooth"
+    },
+    {
+      "id": "f830",
+      "category": "Electronics",
+      "title": "Boult Audio K40 True Wireless in Ear Earbuds",
+      "price": "1199",
+      "image": "https://m.media-amazon.com/images/I/51a2ufYPV4L._SX679_.jpg",
+      "rating": "8",
+      "description": "48H Playtime: Enjoy an exceptional 48 hours of continuous playtime with these cutting-edge Bluetooth earbuds, ensuring your music, calls, and gaming sessions never miss a beat."
+    },
+    {
+      "id": "6be1",
+      "category": "Electronics",
+      "title": "Boult Newly Launched Klarity",
+      "price": "1299",
+      "image": "https://m.media-amazon.com/images/I/31I9yNo75EL._SX300_SY300_QL70_FMwebp_.jpg",
+      "rating": "8",
+      "description": "60-Hour Playtime: The Boult Klarity 4 offers a remarkable 60 hours of playtime, giving you uninterrupted listening for days on a single charge—ideal for long trips, work sessions"
+    },
+    {
+      "id": "3fb9",
+      "category": "Electronics",
+      "title": "LEDO Men's and Women's Watch Box",
+      "price": "849",
+      "image": "https://m.media-amazon.com/images/I/41st2XjEP8L._SX300_SY300_QL70_FMwebp_.jpg",
+      "rating": "5",
+      "description": "This watch case keeps your watches always closer to your heart and make them special for every occasion.Feel free from unwanted damages"
+    },
+    {
+      "id": "8303",
+      "category": "Electronics",
+      "title": "boAt Rockerz 550 Bluetooth Wireless",
+      "price": "1799",
+      "image": "https://m.media-amazon.com/images/I/41d6iHtmzAL._SX300_SY300_QL70_FMwebp_.jpg",
+      "rating": "5",
+      "description": "Ear Cushions- It has been ergonomically designed and structured as an over-ear headphone to provide the best user experience with its plush padded earcushions"
+    },
+    {
+      "id": "f9c4",
+      "category": "Shoes",
+      "title": "ASIAN Men's Wonder-13",
+      "price": "899",
+      "image": "https://m.media-amazon.com/images/I/61utX8kBDlL._SY695_.jpg",
+      "rating": "7",
+      "description": "Lightweight & Breathable : Exclusive design and durable materials every step feels light and breezy. Breathable, free-moving"
+    }
+  ]
+}
