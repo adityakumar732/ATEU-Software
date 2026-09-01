@@ -48,7 +48,7 @@ export const AddItem = () => {
         if (!validateForm()) return;
 
         try {
-            const res = await axios.post("http://localhost:1222/Product", product);
+            const res = await axios.post("http://localhost:8080/Product", product);
             console.log(res);
             handleSucces("Product added successfully")
             resetForm();
