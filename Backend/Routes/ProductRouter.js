@@ -1,54 +1,109 @@
 const Aunthenticated = require("../Middlewares/AauthMiddleware");
+const Product = require("../Models/ProductModel");
+
 
 const router = require("express").Router();
 
-// Temporary product data
-const products = [
-    {
-        id: "1",
-        category: "Electronics",
-        title: "Mobile",
-        description: "A high-performance smartphone with modern features.",
-        image: "https://via.placeholder.com/300x200?text=Mobile",
-        price: 10000,
-        rating: 4.5
-    },
-    {
-        id: "2",
-        category: "Electronics",
-        title: "Smart TV",
-        description: "A smart television with a high-quality display.",
-        image: "https://via.placeholder.com/300x200?text=Smart+TV",
-        price: 20000,
-        rating: 4.7
-    }
-];
-
 // GET all products
-router.get("/", Aunthenticated, (req, res) => {
-    res.status(200).json(products);
-});
+router.get("/", Aunthenticated, async (req, res) => {
+    try {
+        const products = await Product.find();
 
-// DELETE product
-router.delete("/:id", Aunthenticated, (req, res) => {
-    const { id } = req.params;
-
-    const productIndex = products.findIndex(
-        (product) => product.id === id
-    );
-
-    if (productIndex === -1) {
-        return res.status(404).json({
-            message: "Product not found"
+        res.status(200).json(products);
+    } catch (err) {
+        res.status(500).json({
+            message: "Failed to fetch products"
         });
     }
+});
 
-    products.splice(productIndex, 1);
+// ADD product
+router.post("/", Aunthenticated, async (req, res) => {
+    try {
+        const {
+            category,
+            title,
+            description,
+            image,
+            price,
+            rating
+        } = req.body;
 
-    return res.status(200).json({
-        message: "Product deleted successfully",
-        success: true
-    });
+        const newProduct = new Product({
+            category,
+            title,
+            description,
+            image,
+            price,
+            rating
+        });
+
+        const savedProduct = await newProduct.save();
+
+        res.status(201).json({
+            message: "Product added successfully",
+            product: savedProduct
+        });
+
+    } catch (err) {
+        res.status(500).json({
+            message: "Failed to add product"
+        });
+    }
+});
+// UPDATE product
+router.put("/:id", Aunthenticated, async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        const updatedProduct = await Product.findByIdAndUpdate(
+            id,
+            req.body,
+            { new: true, runValidators: true }
+        );
+
+        if (!updatedProduct) {
+            return res.status(404).json({
+                message: "Product not found"
+            });
+        }
+
+        res.status(200).json({
+            message: "Product updated successfully",
+            product: updatedProduct
+        });
+
+    } catch (err) {
+        console.log(err);
+
+        res.status(500).json({
+            message: "Failed to update product"
+        });
+    }
+});
+// DELETE product
+router.delete("/:id", Aunthenticated, async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        const deletedProduct = await Product.findByIdAndDelete(id);
+
+        if (!deletedProduct) {
+            return res.status(404).json({
+                message: "Product not found"
+            });
+        }
+
+        res.status(200).json({
+            message: "Product deleted successfully",
+            success: true
+        });
+
+    } catch (err) {
+        res.status(500).json({
+            message: "Failed to delete product"
+        });
+    }
 });
 
 module.exports = router;

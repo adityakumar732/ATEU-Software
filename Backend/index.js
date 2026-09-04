@@ -63,6 +63,6 @@ app.use('/auth', AuthRouter);
 app.use('/products', ProductRouter);
 
 // Start server
-app.listen(PORT, () => {
-    console.log(`Server is running on ${PORT}`);
-});
+app.listen(PORT, "0.0.0.0", () => {
+    console.log(`Server is running on ${PORT}`)
+})

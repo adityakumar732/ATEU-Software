@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import axios from 'axios';
-import { toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import { handleError, handleSucces } from '../Toasty';
 export const AddItem = () => {
 
@@ -48,13 +48,25 @@ export const AddItem = () => {
         if (!validateForm()) return;
 
         try {
-            const res = await axios.post("http://localhost:8080/Product", product);
+            const token = localStorage.getItem("token");
+
+const res = await axios.post(
+    "http://localhost:8080/products",
+    product,
+    {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    }
+);
             console.log(res);
             handleSucces("Product added successfully")
             resetForm();
         } catch (err) {
             console.error(err);
-            handleError('Failed to add product. Please try again.')
+            handleError(
+        err.response?.data?.message || "Failed to add product. Please try again."
+    );s
         }
     };
 
@@ -81,6 +93,7 @@ export const AddItem = () => {
                     </button>
                 </form>
             </div>
+            <ToastContainer />
         </>
     )
 }

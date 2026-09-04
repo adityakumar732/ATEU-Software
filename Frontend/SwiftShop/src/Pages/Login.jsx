@@ -58,7 +58,9 @@ export const Login = () => {
             console.log(result);
         }
         catch (err) {
-            handleError(err)
+            handleError(
+                err.response?.data?.message || "Username or password is wrong"
+            );
         }
 
     }

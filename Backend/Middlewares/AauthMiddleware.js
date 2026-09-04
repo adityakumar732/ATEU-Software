@@ -8,7 +8,11 @@ const Aunthenticated = (req,res,next)=>{
         .json({message: "Unauthorized, JWT token is require"});
     }
     try{
-        const decoded = jwt.verify(auth, process.env.JWT_SECRET);
+       const token = auth.startsWith("Bearer ")
+    ? auth.split(" ")[1]
+    : auth;
+
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
         req.user = decoded;
         next();
     }
