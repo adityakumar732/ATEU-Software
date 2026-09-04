@@ -19,7 +19,7 @@ export const Shop = () => {
             }
 
             const response = await axios.get(
-                "http://localhost:8080/products",
+                "https://ateu-software.onrender.com/products",
                 {
                     headers: {
                         Authorization: token,
@@ -51,7 +51,7 @@ export const Shop = () => {
             }
 
             await axios.delete(
-                `http://localhost:8080/products/${id}`,
+                `https://ateu-software.onrender.com/products/${id}`,
                 {
                     headers: {
                         Authorization: token,
@@ -79,7 +79,7 @@ const updateProduct = async (e) => {
         const token = localStorage.getItem("token");
 
         const response = await axios.put(
-            `http://localhost:8080/products/${editProduct._id}`,
+            `https://ateu-software.onrender.com/products/${editProduct._id}`,
             editProduct,
             {
                 headers: {

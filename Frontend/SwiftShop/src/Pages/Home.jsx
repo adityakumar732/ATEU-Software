@@ -7,14 +7,21 @@ import { DashBoard } from './DashBoard';
 export const Home = () => {
     return (
         <>
-            <Navbar />
-            <Routes>
-                <Route path='/' element={<DashBoard />} />
-                <Route path="/addItem" element={<AddItem />} />
-                <Route path="/shop" element={<Shop />} />
+            <div className="flex flex-col min-h-screen">
 
-            </Routes>
-            <Footer />
+                    <Navbar />
+
+                    <main className="flex-1">
+                        <Routes>
+                            <Route path="/" element={<DashBoard />} />
+                            <Route path="/addItem" element={<AddItem />} />
+                            <Route path="/shop" element={<Shop />} />
+                        </Routes>
+                    </main>
+
+                    <Footer />
+
+            </div>
         </>
     )
 }

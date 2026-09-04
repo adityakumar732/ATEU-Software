@@ -51,7 +51,7 @@ export const AddItem = () => {
             const token = localStorage.getItem("token");
 
 const res = await axios.post(
-    "http://localhost:8080/products",
+    "https://ateu-software.onrender.com/products",
     product,
     {
         headers: {
@@ -73,7 +73,7 @@ const res = await axios.post(
     return (
         <>
             <div>
-                <form onSubmit={addProduct} className="p-4 max-w-lg mx-auto space-y-4 shadow-lg rounded-xl">
+                <form onSubmit={addProduct} className="p-4 my-[30px] mx-auto max-w-lg space-y-4 shadow-lg rounded-xl">
                     {["category", "title", "price", "image", "rating", "description"].map((field) => (
                         <input
                             key={field}

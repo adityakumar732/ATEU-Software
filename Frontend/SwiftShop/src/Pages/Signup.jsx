@@ -28,7 +28,7 @@ export const Signup = () => {
             return handleError('Provide all the details')
         }
         try {
-            const URL = `http://localhost:8080/auth/signup`;
+            const URL = `https://ateu-software.onrender.com/auth/signup`;
             const fetchData = await axios.post(URL, signUp, {
                 headers: {
                     'Content-Type': 'application/json'
