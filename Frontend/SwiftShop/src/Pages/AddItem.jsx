@@ -45,20 +45,26 @@ export const AddItem = () => {
 
     const addProduct = async (e) => {
         e.preventDefault();
+        const token = localStorage.getItem("token");
+
+        if (!token) {
+            handleError("Please login first to add a product");
+            return;
+        }
         if (!validateForm()) return;
 
         try {
             const token = localStorage.getItem("token");
 
-const res = await axios.post(
-    "https://ateu-software.onrender.com/products",
-    product,
-    {
-        headers: {
-            Authorization: `Bearer ${token}`
-        }
-    }
-);
+            const res = await axios.post(
+                "https://ateu-software.onrender.com/products",
+                product,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                }
+            );
             console.log(res);
             handleSucces("Product added successfully")
             resetForm();
@@ -66,7 +72,7 @@ const res = await axios.post(
             console.error(err);
             handleError(
         err.response?.data?.message || "Failed to add product. Please try again."
-    );s
+    );
         }
     };
 
@@ -76,14 +82,15 @@ const res = await axios.post(
                 <form onSubmit={addProduct} className="p-4 my-[30px] mx-auto max-w-lg space-y-4 shadow-lg rounded-xl">
                     {["category", "title", "price", "image", "rating", "description"].map((field) => (
                         <input
-                            key={field}
-                            type={field === "price" || field === "rating" ? "number" : "text"}
-                            name={field}
-                            value={product[field]}
-                            onChange={handleChange}
-                            placeholder={`Enter ${field}`}
-                            className="w-full p-2 border rounded-lg"
-                        />
+    key={field}
+    type={field === "price" || field === "rating" ? "number" : "text"}
+    step={field === "price" || field === "rating" ? "any" : undefined}
+    name={field}
+    value={product[field]}
+    onChange={handleChange}
+    placeholder={`Enter ${field}`}
+    className="w-full p-2 border rounded-lg [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+/>
                     ))}
                     <button
                         type="submit"

@@ -13,13 +13,13 @@ export const Login = () => {
     const navigate = useNavigate();
     const handlechange = (e) => {
         const { name, value } = e.target;
-        console.log(name, value);
+        // console.log(name, value);
         const logInfo = { ...logIn };
         logInfo[name] = value;
         setLogIn(logInfo);
 
     }
-    console.log('====>', logIn)
+    // console.log('====>', logIn)
     const handleLoginSubmit = async (e) => {
         e.preventDefault();
         const { email, password } = logIn;  //!extracting the detaisl
@@ -55,7 +55,7 @@ export const Login = () => {
             else if (!success) {
                 handleError(message);
             }
-            console.log(result);
+            // console.log(result);
         }
         catch (err) {
             handleError(

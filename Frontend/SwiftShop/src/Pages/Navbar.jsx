@@ -9,7 +9,13 @@ export const Navbar = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        setUser(localStorage.getItem("loggedInUser"));
+        const token = localStorage.getItem("token");
+
+        if (token) {
+            setUser(localStorage.getItem("loggedInUser"));
+        } else {
+            setUser("");
+        }
     }, []);
 
     const userLogout = () => {
@@ -19,11 +25,12 @@ export const Navbar = () => {
 
         handleSucces(`${user} has successfully logged out`, "Logout");
 
+        setUser("");
         setMenuOpen(false);
 
-        setTimeout(() => {
-            navigate("/login");
-        }, 1000);
+        // setTimeout(() => {
+        //     navigate("/login");
+        // }, 1000);
     };
 
     const closeMenu = () => {
@@ -76,20 +83,33 @@ export const Navbar = () => {
                     {/* Right Side */}
                     <div className="flex items-center gap-2 sm:gap-4">
 
-                        {/* User - Desktop */}
-                        <button
-                            className="hidden px-4 py-2 font-medium text-white transition duration-300 bg-sky-500 rounded-lg md:block hover:bg-sky-700"
-                        >
-                            {user}
-                        </button>
+                        {/* Logged In */}
+                        {user ? (
+                            <>
+                                {/* User - Desktop */}
+                                <button
+                                    className="hidden px-4 py-2 font-medium text-white transition duration-300 bg-sky-500 rounded-lg md:block hover:bg-sky-700"
+                                >
+                                    {user}
+                                </button>
 
-                        {/* Logout - Desktop */}
-                        <button
-                            onClick={userLogout}
-                            className="hidden px-4 py-2 font-medium text-white transition duration-300 bg-red-500 rounded-lg md:block hover:bg-red-700"
-                        >
-                            Logout
-                        </button>
+                                {/* Logout - Desktop */}
+                                <button
+                                    onClick={userLogout}
+                                    className="hidden px-4 py-2 font-medium text-white transition duration-300 bg-red-500 rounded-lg md:block hover:bg-red-700"
+                                >
+                                    Logout
+                                </button>
+                            </>
+                        ) : (
+                            /* Login - Desktop */
+                            <button
+                                onClick={() => navigate("/login")}
+                                className="hidden px-5 py-2 font-medium text-white transition duration-300 bg-blue-500 rounded-lg md:block hover:bg-blue-700"
+                            >
+                                Login
+                            </button>
+                        )}
 
                         {/* Hamburger - Mobile */}
                         <button
@@ -145,23 +165,25 @@ export const Navbar = () => {
                     <div className="px-4 py-4 bg-gray-50 border-t border-gray-100 shadow-xl">
 
                         {/* User Card */}
-                        <div className="flex items-center gap-3 p-4 mb-3 bg-white shadow-sm rounded-xl">
+                        {user && (
+                            <div className="flex items-center gap-3 p-4 mb-3 bg-white shadow-sm rounded-xl">
 
-                            <div className="flex items-center justify-center w-11 h-11 font-bold text-white bg-gradient-to-r from-blue-500 to-purple-600 rounded-full">
-                                {user?.charAt(0)?.toUpperCase() || "U"}
+                                <div className="flex items-center justify-center w-11 h-11 font-bold text-white bg-gradient-to-r from-blue-500 to-purple-600 rounded-full">
+                                    {user?.charAt(0)?.toUpperCase() || "U"}
+                                </div>
+
+                                <div>
+                                    <p className="text-xs text-gray-500">
+                                        Welcome back
+                                    </p>
+
+                                    <p className="font-semibold text-gray-800">
+                                        {user}
+                                    </p>
+                                </div>
+
                             </div>
-
-                            <div>
-                                <p className="text-xs text-gray-500">
-                                    Welcome back
-                                </p>
-
-                                <p className="font-semibold text-gray-800">
-                                    {user}
-                                </p>
-                            </div>
-
-                        </div>
+                        )}
 
                         {/* Mobile Links */}
                         <div className="space-y-2">
@@ -211,19 +233,37 @@ export const Navbar = () => {
                                 </span>
                             </Link>
 
-                            {/* Logout - Mobile */}
-                            <button
-                                onClick={userLogout}
-                                className="flex items-center w-full px-4 py-3 font-medium text-red-600 transition duration-300 bg-white rounded-xl hover:bg-red-50"
-                            >
-                                <span className="flex items-center justify-center w-10 h-10 text-lg bg-red-100 rounded-lg">
-                                    🚪
-                                </span>
+                            {/* Login / Logout */}
+                            {user ? (
+                                <button
+                                    onClick={userLogout}
+                                    className="flex items-center w-full px-4 py-3 font-medium text-red-600 transition duration-300 bg-white rounded-xl hover:bg-red-50"
+                                >
+                                    <span className="flex items-center justify-center w-10 h-10 text-lg bg-red-100 rounded-lg">
+                                        🚪
+                                    </span>
 
-                                <span className="ml-3">
-                                    Logout
-                                </span>
-                            </button>
+                                    <span className="ml-3">
+                                        Logout
+                                    </span>
+                                </button>
+                            ) : (
+                                <button
+                                    onClick={() => {
+                                        closeMenu();
+                                        navigate("/login");
+                                    }}
+                                    className="flex items-center w-full px-4 py-3 font-medium text-blue-600 transition duration-300 bg-white rounded-xl hover:bg-blue-50"
+                                >
+                                    <span className="flex items-center justify-center w-10 h-10 text-lg bg-blue-100 rounded-lg">
+                                        🔐
+                                    </span>
+
+                                    <span className="ml-3">
+                                        Login
+                                    </span>
+                                </button>
+                            )}
 
                         </div>
                     </div>

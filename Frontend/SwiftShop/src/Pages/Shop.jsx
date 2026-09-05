@@ -11,6 +11,13 @@ export const Shop = () => {
     
     const showData = async () => {
         try {
+            // const token = localStorage.getItem("token");
+
+            // if (!token) {
+            //     handleError("Please login first");
+            //     return;
+            // }
+
             const token = localStorage.getItem("token");
 
             if (!token) {
@@ -22,7 +29,7 @@ export const Shop = () => {
                 "https://ateu-software.onrender.com/products",
                 {
                     headers: {
-                        Authorization: token,
+                        Authorization: `Bearer ${token}`,
                     },
                 }
             );
@@ -54,7 +61,7 @@ export const Shop = () => {
                 `https://ateu-software.onrender.com/products/${id}`,
                 {
                     headers: {
-                        Authorization: token,
+                        Authorization: `Bearer ${token}`,
                     },
                 }
             );
@@ -77,13 +84,16 @@ const updateProduct = async (e) => {
 
     try {
         const token = localStorage.getItem("token");
-
+        if (!token) {
+            handleError("Please login first to update the product");
+            return;
+        }
         const response = await axios.put(
             `https://ateu-software.onrender.com/products/${editProduct._id}`,
             editProduct,
             {
                 headers: {
-                    Authorization: token
+                    Authorization: `Bearer ${token}`,
                 }
             }
         );
@@ -143,7 +153,16 @@ const updateProduct = async (e) => {
                                     </p>
                                 </div>
                                 <button
-                                    onClick={() => setEditProduct(element)}
+                                    onClick={() => {
+                                                const token = localStorage.getItem("token");
+
+                                                if (!token) {
+                                                    handleError("Please login first");
+                                                    return;
+                                                }
+
+                                                setEditProduct(element);
+                                            }}
                                     className="flex items-center justify-center w-full gap-2 p-2 mt-4 text-white transition duration-300 bg-blue-500 rounded-lg hover:bg-blue-600"
                                 >
                                     <EditIcon className="w-5 h-5" />

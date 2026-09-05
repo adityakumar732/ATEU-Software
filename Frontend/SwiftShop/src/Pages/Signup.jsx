@@ -13,13 +13,13 @@ export const Signup = () => {
     const navigate = useNavigate();
     const handlechange = (e) => {
         const { name, value } = e.target;
-        console.log(name, value);
+        // console.log(name, value);
         const signInfo = { ...signUp };
         signInfo[name] = value;
         setSignUp(signInfo);
 
     }
-    console.log('====', signUp)
+    // console.log('====', signUp)
     const handleSubmit = async (e) => {
         e.preventDefault();
         const { name, email, password } = signUp;  //!extracting the detaisl

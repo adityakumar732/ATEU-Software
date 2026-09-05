@@ -5,7 +5,7 @@ const Product = require("../Models/ProductModel");
 const router = require("express").Router();
 
 // GET all products
-router.get("/", Aunthenticated, async (req, res) => {
+router.get("/", async (req, res) => {
     try {
         const products = await Product.find();
 
