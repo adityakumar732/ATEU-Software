@@ -4,13 +4,19 @@ import axios from 'axios'
 import { Link } from 'react-router-dom';
 import { handleError, handleSucces } from '../Toasty';
 import { ToastContainer } from 'react-toastify';
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+
 export const Signup = () => {
     const [signUp, setSignUp] = useState({
         name: '',
         email: '',
         password: ''
-    })
+    });
+    const [showPassword, setShowPassword] = useState(false);
+
     const navigate = useNavigate();
+    
     const handlechange = (e) => {
         const { name, value } = e.target;
         // console.log(name, value);
@@ -111,14 +117,29 @@ export const Signup = () => {
                         >
                             Password
                         </label>
-                        <input
-                            value={signUp.password}
-                            onChange={handlechange}
-                            type="password"
-                            name="password"
-                            placeholder="Enter your password"
-                            className="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
-                        />
+                        <div className="relative">
+                            <input
+                                value={signUp.password}
+                                onChange={handlechange}
+                                type={showPassword ? "text" : "password"}
+                                name="password"
+                                placeholder="Enter your password"
+                                className="w-full p-3 pr-12 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                            />
+
+                            <button
+                                type="button"
+                                onMouseEnter={() => setShowPassword(true)}
+                                onMouseLeave={() => setShowPassword(false)}
+                                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-blue-600 transition-all duration-300 hover:scale-110"
+                            >
+                                {showPassword ? (
+                                    <VisibilityIcon />
+                                ) : (
+                                    <VisibilityOffIcon />
+                                )}
+                            </button>
+                        </div>
                     </div>
 
                     {/* Submit Button */}
